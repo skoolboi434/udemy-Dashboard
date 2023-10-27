@@ -1,0 +1,47 @@
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  h1 {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid silver;
+  }
+
+  .login-form,
+  .register-form {
+    padding: 0 40px 40px 40px;
+
+    .input-field {
+      position: relative;
+      margin: 30px 0;
+    }
+
+    .btn {
+      background: rgba(113, 99, 186, 255);
+      border: 1px solid rgba(113, 99, 186, 255);
+      width: 100%;
+    }
+
+    .signup-link {
+      text-align: center;
+      font-size: 16px;
+      color: #666666;
+
+      a {
+        color: rgba(113, 99, 186, 255);
+        text-decoration: none;
+
+        &:hover {
+          color: purple;
+        }
+      }
+    }
+  }
+}

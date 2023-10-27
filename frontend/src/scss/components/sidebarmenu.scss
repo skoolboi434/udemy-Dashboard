@@ -1,0 +1,68 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: rgba(113, 99, 186, 255);
+  padding: 0 1.7rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+
+  .logo {
+    height: 80px;
+    padding: 16px;
+  }
+
+  .main-nav {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 1rem;
+      margin: 8px 0;
+      border-radius: 8px;
+      transition: all 0.5 ease-in-out;
+
+      &:hover {
+        background: #e0e0e058;
+      }
+
+      &.active {
+        background: #e0e0e058;
+      }
+
+      &.logout {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      a {
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        &.active {
+          background: #e0e0e058;
+        }
+
+        svg {
+          font-size: 1.2rem;
+        }
+
+        span {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
