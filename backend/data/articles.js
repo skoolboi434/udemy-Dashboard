@@ -6,7 +6,8 @@ const articles = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     publication: 'Times Leader',
     category: 'News',
-    status: 'Draft'
+    status: 'Draft',
+    author: 'Rick Sanchez'
   },
 
   {
@@ -16,7 +17,19 @@ const articles = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     publication: 'Champion Media',
     category: 'Entertainment',
-    status: 'Draft'
+    status: 'Draft',
+    author: 'Stan Smith'
+  },
+
+  {
+    _id: '3',
+    name: 'TTL021622NEPAAllianceStaff.bob',
+    image: 'https://placehold.co/200',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    publication: 'Champion Media',
+    category: 'News',
+    status: 'Draft',
+    author: 'Travis Davis'
   }
 ];
 
