@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
 const PostsList = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const { data } = await axios.get('/api/articles');
+      setArticles(data);
+    };
+
+    fetchArticles();
+  }, []);
   return (
     <div className='content-list-container'>
       <div className='table-wrapper'>
@@ -21,39 +32,23 @@ const PostsList = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>123</td>
-                <td></td>
-                <td>Bills Hamlin will put the millions raised into his charity</td>
-                <td>Times Leader</td>
-                <td>Draft</td>
-                <td>{new Date().toLocaleString()}</td>
-                <td>
-                  <Button variant='primary'>Edit</Button>
-                </td>
-              </tr>
-              <tr>
-                <td>231</td>
-                <td></td>
-                <td>Bills Hamlin will put the millions raised into his charity</td>
-                <td>Times Leader</td>
-                <td>Draft</td>
-                <td>{new Date().toLocaleString()}</td>
-                <td>
-                  <Button variant='primary'>Edit</Button>
-                </td>
-              </tr>
-              <tr>
-                <td>123</td>
-                <td></td>
-                <td>Bills Hamlin will put the millions raised into his charity</td>
-                <td>Times Leader</td>
-                <td>Draft</td>
-                <td>{new Date().toLocaleString()}</td>
-                <td>
-                  <Button variant='primary'>Edit</Button>
-                </td>
-              </tr>
+              {articles.map(article => (
+                <tr key={article._id}>
+                  <td>{article._id}</td>
+                  <td>
+                    <Image src={article.image} fluid />
+                  </td>
+                  <td>
+                    <Link to={`/articles/${article._id}`}>{article.name}</Link>
+                  </td>
+                  <td>{article.publication}</td>
+                  <td>{article.status}</td>
+                  <td>{new Date().toLocaleString()}</td>
+                  <td>
+                    <Button variant='primary'>Edit</Button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
