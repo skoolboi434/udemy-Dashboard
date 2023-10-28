@@ -7,12 +7,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
 import ArticlesScreen from './screens/ArticlesScreen';
+import ArticleDetailsScreen from './screens/ArticleDetailsScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/articles' element={<ArticlesScreen />} />
+      <Route path='/article/:id' element={<ArticleDetailsScreen />} />
     </Route>
   )
 );
