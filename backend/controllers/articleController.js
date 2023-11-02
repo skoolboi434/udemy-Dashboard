@@ -11,7 +11,7 @@ const getArticles = asyncHandler(async (req, res) => {
 });
 
 // @DESC Fetch article by ID
-// @route GET /api/products/:id
+// @route GET /api/articles/:id
 // @access Public
 const getArticleById = asyncHandler(async (req, res) => {
   const article = await Article.findById(req.params.id);
