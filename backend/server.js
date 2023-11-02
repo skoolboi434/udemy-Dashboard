@@ -1,10 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
 
-import articles from './data/articles.js';
-const port = process.env.PORT;
+import connetDB from './config/db.js';
+import articleRoutes from './routes/articleRoutes.js';
+
+const port = process.env.PORT || 5000;
+
+connetDB(); // Connect to MongoDB
 
 const app = express();
 
@@ -12,13 +17,9 @@ app.get('/', (req, res) => {
   res.send('Api running....');
 });
 
-app.get('/api/articles', (req, res) => {
-  res.json(articles);
-});
+app.use('/api/articles', articleRoutes);
 
-app.get('/api/articles/:id', (req, res) => {
-  const article = articles.find(a => a._id === req.params.id);
-  res.json(article);
-});
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

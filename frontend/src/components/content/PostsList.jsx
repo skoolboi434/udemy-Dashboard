@@ -39,7 +39,7 @@ const PostsList = () => {
                     <Image src={article.image} fluid />
                   </td>
                   <td>
-                    <Link to={`/articles/${article._id}`}>{article.name}</Link>
+                    <Link to={`/articles/${article._id}`}>{article.title}</Link>
                   </td>
                   <td>{article.publication}</td>
                   <td>{article.status}</td>

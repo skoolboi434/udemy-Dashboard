@@ -32,7 +32,7 @@ const ArticleDetailsScreen = () => {
           {article && (
             <>
               <div className='heading-container'>
-                <h1 className='heading'>{article.name}</h1>
+                <h1 className='heading'>{article.title}</h1>
               </div>
 
               <Row>
@@ -41,7 +41,7 @@ const ArticleDetailsScreen = () => {
                     <Image src={article.image} fluid className='feat-img mb-3' />
                     <p className='subheading'>Category: {article.category}</p>
                     <p className='publication'>Publication: {article.publication}</p>
-                    <p>{article.description}</p>
+                    <p>{article.body}</p>
                   </div>
                 </Col>
                 <Col md={4}>
