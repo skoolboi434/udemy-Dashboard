@@ -13,7 +13,6 @@ const SearchBar = ({ title }) => {
           <FaSearch />
           <input type='text' placeholder='Search...' />
         </div>
-        <img src='https://placehold.co/400' alt='' />
       </div>
     </div>
   );

@@ -1,8 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCreativeCommonsRemix, FaUser, FaPaperPlane, FaNewspaper, FaSlidersH } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { logout } from '../slices/authSlice';
 
 const SidebarMenu = () => {
+  const { userInfo } = useSelector(state => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className='sidebar'>
       <div className='logo'></div>
@@ -38,7 +58,7 @@ const SidebarMenu = () => {
           </Link>
         </li>
         <li className='logout'>
-          <Link to='/'>
+          <Link to='/' onClick={logoutHandler}>
             <span>Logout</span>
           </Link>
         </li>
