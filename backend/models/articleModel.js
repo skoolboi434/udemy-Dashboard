@@ -20,8 +20,7 @@ const articleSchema = new mongoose.Schema(
       required: true
     },
     status: {
-      type: String,
-      required: true
+      type: String
     },
     category: {
       type: String,

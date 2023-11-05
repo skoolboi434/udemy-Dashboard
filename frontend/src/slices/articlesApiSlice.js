@@ -15,8 +15,16 @@ export const articlesApiSlice = apiSlice.injectEndpoints({
         url: `${ARTICLES_URL}/${articleId}`
       }),
       keepUnusedDataFor: 5
+    }),
+
+    createArticle: builder.mutation({
+      query: () => ({
+        url: ARTICLES_URL,
+        method: 'POST'
+      }),
+      invalidatesTags: ['Article']
     })
   })
 });
 
-export const { useGetArticlesQuery, useGetArticleDetailsQuery } = articlesApiSlice;
+export const { useGetArticlesQuery, useGetArticleDetailsQuery, useCreateArticleMutation } = articlesApiSlice;

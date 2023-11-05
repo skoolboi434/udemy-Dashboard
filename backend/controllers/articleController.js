@@ -2,7 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Article from '../models/articleModel.js';
 
 // @DESC Fetch all articles
-// @route GET /api/products
+// @route GET /api/articles
 // @access Public
 
 const getArticles = asyncHandler(async (req, res) => {
@@ -24,4 +24,28 @@ const getArticleById = asyncHandler(async (req, res) => {
   }
 });
 
-export { getArticles, getArticleById };
+// @DESC Create article
+// @route POST /api/articles
+// @access Private / Admin
+
+const createArticle = asyncHandler(async (req, res) => {
+  try {
+    const article = new Article({
+      title: 'Sample Title',
+      user: req.user._id,
+      image: 'https://placehold.co/200',
+      category: 'Sports',
+      publication: 'Sample Publication',
+      body: 'Sample Body',
+      draft: 'Draft'
+    });
+
+    const createdArticle = await article.save();
+    res.status(201).json(createdArticle);
+  } catch (error) {
+    console.error('Error creating article:', error);
+    res.status(500).json({ message: 'Failed to create the article' });
+  }
+});
+
+export { getArticles, getArticleById, createArticle };

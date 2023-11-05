@@ -1,22 +1,18 @@
-import React from 'react';
 import PageWrap from '../components/PageWrap';
 import SidebarMenu from '../components/SidebarMenu';
-import PostsList from '../components/content/PostsList';
 import SearchBar from '../components/SearchBar';
 
-const ArticlesScreen = () => {
+const AddArticleScreen = () => {
   return (
     <>
-      <PageWrap title='React Dashboard || Articles'>
+      <PageWrap title='React Dashboard || Dashboard'>
         <SidebarMenu />
         <div className='content-container'>
-          <SearchBar title='Articles' />
-
-          <PostsList />
+          <SearchBar />
         </div>
       </PageWrap>
     </>
   );
 };
 
-export default ArticlesScreen;
+export default AddArticleScreen;

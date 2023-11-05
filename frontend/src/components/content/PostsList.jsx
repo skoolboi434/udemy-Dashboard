@@ -1,11 +1,26 @@
-import { useGetArticlesQuery } from '../../slices/articlesApiSlice';
+import { useGetArticlesQuery, useCreateArticleMutation } from '../../slices/articlesApiSlice';
 import { Link } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import Loader from '../Loader';
 import Message from '../Message';
+import { toast } from 'react-toastify';
 
 const PostsList = () => {
-  const { data: articles, isLoading, error } = useGetArticlesQuery();
+  const { data: articles, isLoading, error, refetch } = useGetArticlesQuery();
+
+  const [createArticle, { isLoading: loadingCreate }] = useCreateArticleMutation();
+
+  const createArticleHandler = async () => {
+    if (window.confirm('Are you sure you want to create a new Article')) {
+      try {
+        await createArticle();
+        refetch();
+      } catch (err) {
+        console.error('Error:', error);
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
 
   return (
     <>
@@ -17,6 +32,10 @@ const PostsList = () => {
         <>
           <div className='content-list-container'>
             <div className='table-wrapper'>
+              <Button variant='primary' onClick={createArticleHandler}>
+                Add Article
+              </Button>
+              {loadingCreate && <Loader />}
               <h3 className='heading'>Content Data</h3>
               <div className='table-container'>
                 <table>
