@@ -14,6 +14,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import PrivateRoute from './components/PrivateRoute';
 import AddArticleScreen from './screens/AddArticleScreen';
+import EditArticleScreen from './screens/EditArticleScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 
         <Route path='/articles' element={<ArticlesScreen />} />
         <Route path='/articles/:id' element={<ArticleDetailsScreen />} />
+        <Route path='/articles/:id/edit' element={<EditArticleScreen />} />
         <Route path='/add-article' element={<AddArticleScreen />} />
       </Route>
     </Route>

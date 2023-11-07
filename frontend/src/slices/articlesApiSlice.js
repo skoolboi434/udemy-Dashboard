@@ -1,4 +1,4 @@
-import { ARTICLES_URL } from '../constants';
+import { ARTICLES_URL, UPLOAD_URL } from '../constants';
 import { apiSlice } from './apiSlice';
 
 export const articlesApiSlice = apiSlice.injectEndpoints({
@@ -7,6 +7,7 @@ export const articlesApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: ARTICLES_URL
       }),
+      providesTags: ['Articles'],
       keepUnusedDataFor: 5
     }),
 
@@ -23,8 +24,33 @@ export const articlesApiSlice = apiSlice.injectEndpoints({
         method: 'POST'
       }),
       invalidatesTags: ['Article']
+    }),
+
+    updateArticle: builder.mutation({
+      query: data => ({
+        url: `${ARTICLES_URL}/${data.articleId}`,
+        method: 'PUT',
+        body: data
+      }),
+
+      invalidatesTags: ['Articles']
+    }),
+
+    uploadArticleImage: builder.mutation({
+      query: data => ({
+        url: `${UPLOAD_URL}`,
+        method: 'POST',
+        body: data
+      })
+    }),
+
+    deleteArticle: builder.mutation({
+      query: articleId => ({
+        url: `${ARTICLES_URL}/${articleId}`,
+        method: 'DELETE'
+      })
     })
   })
 });
 
-export const { useGetArticlesQuery, useGetArticleDetailsQuery, useCreateArticleMutation } = articlesApiSlice;
+export const { useGetArticlesQuery, useGetArticleDetailsQuery, useCreateArticleMutation, useUpdateArticleMutation, useUploadArticleImageMutation, useDeleteArticleMutation } = articlesApiSlice;

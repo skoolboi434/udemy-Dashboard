@@ -1,14 +1,29 @@
-import { useGetArticlesQuery, useCreateArticleMutation } from '../../slices/articlesApiSlice';
+import { useGetArticlesQuery, useCreateArticleMutation, useDeleteArticleMutation } from '../../slices/articlesApiSlice';
 import { Link } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import Loader from '../Loader';
 import Message from '../Message';
 import { toast } from 'react-toastify';
+import { FaTrash } from 'react-icons/fa';
 
 const PostsList = () => {
   const { data: articles, isLoading, error, refetch } = useGetArticlesQuery();
 
   const [createArticle, { isLoading: loadingCreate }] = useCreateArticleMutation();
+
+  const [deleteArticle, { isLoading: loadingDelete }] = useDeleteArticleMutation();
+
+  const deleteHandler = async id => {
+    if (window.confirm('Are you sure you want to delete this article?')) {
+      try {
+        await deleteArticle(id);
+        toast.success('Article Deleted');
+        refetch();
+      } catch (error) {
+        toast.error(error?.data?.message || error.messsage);
+      }
+    }
+  };
 
   const createArticleHandler = async () => {
     if (window.confirm('Are you sure you want to create a new Article')) {
@@ -36,6 +51,7 @@ const PostsList = () => {
                 Add Article
               </Button>
               {loadingCreate && <Loader />}
+
               <h3 className='heading'>Content Data</h3>
               <div className='table-container'>
                 <table>
@@ -64,7 +80,12 @@ const PostsList = () => {
                         <td>{article.status}</td>
                         <td>{new Date().toLocaleString()}</td>
                         <td>
-                          <Button variant='primary'>Edit</Button>
+                          <Link className='btn btn-primary' variant='primary' to={`/articles/${article._id}/edit`}>
+                            Edit
+                          </Link>
+                          <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(article._id)}>
+                            <FaTrash style={{ color: 'white' }} />
+                          </Button>
                         </td>
                       </tr>
                     ))}

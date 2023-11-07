@@ -48,4 +48,43 @@ const createArticle = asyncHandler(async (req, res) => {
   }
 });
 
-export { getArticles, getArticleById, createArticle };
+// @DESC Update article
+// @route PUT /api/articles/:id/edit
+// @access Private
+
+const updateArticle = asyncHandler(async (req, res) => {
+  const { title, body, image, category, publication, draft } = req.body;
+
+  const article = await Article.findById(req.params.id);
+
+  if (article) {
+    article.title = title;
+    article.body = body;
+    article.image = image;
+    article.category = category;
+    article.publication = publication;
+    article.draft = draft;
+
+    const updateArticle = await article.save();
+    res.json(updateArticle);
+  } else {
+    throw new Error('Resource not found');
+  }
+});
+
+// @DESC Delete article
+// @route Delete /api/articles/:id
+// @access Private
+
+const deleteArticle = asyncHandler(async (req, res) => {
+  const article = await Article.findById(req.params.id);
+
+  if (article) {
+    await Article.deleteOne({ _id: article._id });
+    res.status(200).json({ message: 'Article deleted' });
+  } else {
+    throw new Error('Resource not found');
+  }
+});
+
+export { getArticles, getArticleById, createArticle, updateArticle, deleteArticle };
