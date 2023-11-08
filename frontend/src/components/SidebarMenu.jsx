@@ -58,6 +58,11 @@ const SidebarMenu = () => {
             </Link>
           </li>
         ))}
+        <li className='logout'>
+          <Link to='/' onClick={logoutHandler}>
+            <span>Logout</span>
+          </Link>
+        </li>
       </ul>
     </div>
   );
