@@ -28,7 +28,9 @@ const router = createBrowserRouter(
 
       <Route path='' element={<PrivateRoute />}>
         <Route index={true} path='/' element={<HomeScreen />} />
-        <Route index={true} path='/page/:pageNumber' element={<HomeScreen />} />
+        <Route path='/page/:pageNumber' element={<HomeScreen />} />
+        <Route path='/search/:keyword' element={<HomeScreen />} />
+        <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen />} />
         <Route path='/articles' element={<ArticlesScreen />} />
         <Route path='/articles/:id' element={<ArticleDetailsScreen />} />
         <Route path='/articles/:id/edit' element={<EditArticleScreen />} />

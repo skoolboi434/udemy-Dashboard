@@ -8,8 +8,9 @@ import { FaTrash, FaEdit } from 'react-icons/fa';
 import Paginate from '../Paginate';
 
 const PostsList = () => {
-  const { pageNumber } = useParams();
+  const { pageNumber, keyword } = useParams();
   const { data, isLoading, error, refetch } = useGetArticlesQuery({
+    keyword,
     pageNumber
   });
 
@@ -96,7 +97,7 @@ const PostsList = () => {
                   </tbody>
                 </table>
               </div>
-              <Paginate pages={data.pages} page={data.page} />
+              <Paginate pages={data.pages} page={data.page} keyword={keyword ? keyword : ''} />
             </div>
           </div>
         </>

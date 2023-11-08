@@ -8,9 +8,12 @@ import Article from '../models/articleModel.js';
 const getArticles = asyncHandler(async (req, res) => {
   const pageSize = 8;
   const page = Number(req.query.pageNumber) || 1;
-  const count = await Article.countDocuments();
 
-  const articles = await Article.find({})
+  const keyword = req.query.keyword ? { title: { $regex: req.query.keyword, $options: 'i' } } : {};
+
+  const count = await Article.countDocuments({ ...keyword });
+
+  const articles = await Article.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
   res.json({ articles, page, pages: Math.ceil(count / pageSize) });
