@@ -1,13 +1,17 @@
 import { useGetArticlesQuery, useCreateArticleMutation, useDeleteArticleMutation } from '../../slices/articlesApiSlice';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import Loader from '../Loader';
 import Message from '../Message';
 import { toast } from 'react-toastify';
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import Paginate from '../Paginate';
 
 const PostsList = () => {
-  const { data: articles, isLoading, error, refetch } = useGetArticlesQuery();
+  const { pageNumber } = useParams();
+  const { data, isLoading, error, refetch } = useGetArticlesQuery({
+    pageNumber
+  });
 
   const [createArticle, { isLoading: loadingCreate }] = useCreateArticleMutation();
 
@@ -67,7 +71,7 @@ const PostsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {articles.map(article => (
+                    {data.articles.map(article => (
                       <tr key={article._id}>
                         <td>{article._id}</td>
                         <td>
@@ -92,6 +96,7 @@ const PostsList = () => {
                   </tbody>
                 </table>
               </div>
+              <Paginate pages={data.pages} page={data.page} />
             </div>
           </div>
         </>
