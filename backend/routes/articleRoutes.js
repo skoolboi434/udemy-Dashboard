@@ -1,6 +1,4 @@
 import express from 'express';
-import asyncHandler from '../middleware/asyncHandler.js';
-import Article from '../models/articleModel.js';
 import { getArticles, getArticleById, createArticle, updateArticle, deleteArticle } from '../controllers/articleController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 

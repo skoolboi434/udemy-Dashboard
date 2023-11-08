@@ -38,7 +38,7 @@ const SidebarMenu = () => {
           </Link>
         </li>
         <li>
-          <Link to='/'>
+          <Link to='/pages'>
             <FaNewspaper />
             <span>Pages</span>
           </Link>

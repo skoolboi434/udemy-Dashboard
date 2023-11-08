@@ -17,6 +17,8 @@ import AddArticleScreen from './screens/AddArticleScreen';
 import EditArticleScreen from './screens/EditArticleScreen';
 import UsersScreen from './screens/UsersScreen';
 import UserEditScreen from './screens/UserEditScreen';
+import PagesScreen from './screens/PagesScreen';
+import PageDetailsScreen from './screens/PageDetailsScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +35,8 @@ const router = createBrowserRouter(
         <Route path='/add-article' element={<AddArticleScreen />} />
         <Route path='/users' element={<UsersScreen />} />
         <Route path='/user/:id/edit' element={<UserEditScreen />} />
+        <Route path='/pages' element={<PagesScreen />} />
+        <Route path='/pages/:id' element={<PageDetailsScreen />} />
       </Route>
     </Route>
   )

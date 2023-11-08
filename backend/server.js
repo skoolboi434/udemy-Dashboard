@@ -10,6 +10,7 @@ import connetDB from './config/db.js';
 import articleRoutes from './routes/articleRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import pageRoutes from './routes/pageRoutes.js';
 
 const port = process.env.PORT || 5000;
 
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/articles', articleRoutes);
+app.use('/api/pages', pageRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
 
