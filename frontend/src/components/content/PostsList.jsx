@@ -4,7 +4,7 @@ import { Button, Image } from 'react-bootstrap';
 import Loader from '../Loader';
 import Message from '../Message';
 import { toast } from 'react-toastify';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaEdit } from 'react-icons/fa';
 
 const PostsList = () => {
   const { data: articles, isLoading, error, refetch } = useGetArticlesQuery();
@@ -39,6 +39,7 @@ const PostsList = () => {
 
   return (
     <>
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -52,8 +53,7 @@ const PostsList = () => {
               </Button>
               {loadingCreate && <Loader />}
 
-              <h3 className='heading'>Content Data</h3>
-              <div className='table-container'>
+              <div className='table-container mt-3'>
                 <table>
                   <thead>
                     <tr>
@@ -80,10 +80,10 @@ const PostsList = () => {
                         <td>{article.status}</td>
                         <td>{new Date().toLocaleString()}</td>
                         <td>
-                          <Link className='btn btn-primary' variant='primary' to={`/articles/${article._id}/edit`}>
-                            Edit
+                          <Link className='btn btn-warning mb-2' variant='primary' to={`/articles/${article._id}/edit`}>
+                            <FaEdit />
                           </Link>
-                          <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(article._id)}>
+                          <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(article._id)} style={{ color: 'white', width: '42px' }}>
                             <FaTrash style={{ color: 'white' }} />
                           </Button>
                         </td>

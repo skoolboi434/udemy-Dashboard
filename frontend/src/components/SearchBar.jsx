@@ -5,7 +5,6 @@ const SearchBar = ({ title }) => {
   return (
     <div className='header-container'>
       <div className='header-title'>
-        <span>Primary</span>
         <h2>{title}</h2>
       </div>
       <div className='user-info'>

@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaCreativeCommonsRemix, FaUser, FaPaperPlane, FaNewspaper, FaSlidersH } from 'react-icons/fa';
+import { FaCreativeCommonsRemix, FaUser, FaPaperPlane, FaNewspaper, FaSlidersH, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 
 const SidebarMenu = () => {
-  const { userInfo } = useSelector(state => state.auth);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,6 +47,12 @@ const SidebarMenu = () => {
           <Link to='/'>
             <FaUser />
             <span>Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to='/users'>
+            <FaUsers />
+            <span>Users</span>
           </Link>
         </li>
         <li>
