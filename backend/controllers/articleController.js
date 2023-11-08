@@ -6,7 +6,7 @@ import Article from '../models/articleModel.js';
 // @access Public
 
 const getArticles = asyncHandler(async (req, res) => {
-  const pageSize = 8;
+  const pageSize = PAGINATION_LIMIT;
   const page = Number(req.query.pageNumber) || 1;
 
   const keyword = req.query.keyword ? { title: { $regex: req.query.keyword, $options: 'i' } } : {};
