@@ -19,6 +19,7 @@ import UsersScreen from './screens/UsersScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import PagesScreen from './screens/PagesScreen';
 import PageDetailsScreen from './screens/PageDetailsScreen';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,9 +48,11 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

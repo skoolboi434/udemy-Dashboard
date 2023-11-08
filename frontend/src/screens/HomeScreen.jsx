@@ -4,15 +4,17 @@ import PageWrap from '../components/PageWrap';
 import SidebarMenu from '../components/SidebarMenu';
 import SearchBar from '../components/SearchBar';
 import PostsList from '../components/content/PostsList';
+import Meta from '../components/Meta';
 
 const HomeScreen = () => {
   return (
     <>
-      <PageWrap title='React Dashboard || Dashboard'>
+      <PageWrap>
         <SidebarMenu />
         <div className='content-container'>
           <SearchBar title='Dashboard' />
           <div className='card-container'>
+            <Meta />
             <h3 className='main-title'>Today's Data</h3>
             <div className='card-wrapper'>
               <div className='article-card light-red'>

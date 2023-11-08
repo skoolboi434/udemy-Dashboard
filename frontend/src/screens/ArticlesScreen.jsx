@@ -4,11 +4,13 @@ import SidebarMenu from '../components/SidebarMenu';
 import PostsList from '../components/content/PostsList';
 import SearchBar from '../components/SearchBar';
 import ContentContainer from '../components/ContentContainer';
+import Meta from '../components/Meta';
 
 const ArticlesScreen = () => {
   return (
     <>
-      <PageWrap title='React Dashboard || Articles'>
+      <PageWrap>
+        <Meta title='React Dashboard - Articles' />
         <SidebarMenu />
         <ContentContainer>
           <SearchBar title='Articles' />

@@ -23,7 +23,7 @@ const RelatedPostsList = ({ category }) => {
 
   return (
     <div>
-      {articles
+      {/* {articles
         .filter(article => article.category === category)
         .map(article => (
           <div key={article._id} className='related-post-card mb-2'>
@@ -33,7 +33,7 @@ const RelatedPostsList = ({ category }) => {
               <span className='author'>{article.user.name}</span>
             </div>
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };
